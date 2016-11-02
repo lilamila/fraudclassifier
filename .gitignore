@@ -1,0 +1,14 @@
+/data/
+/ignore/
+/practice/
+/enronproject/emails_by_address/
+/enronproject/.ipynb_checkpoints/
+/enronproject/poi_id_runoff.ipynb
+/enronproject/runoff/
+
+
+*.pyc
+*.docx
+*.tmp
+.RData
+.Rhistory
