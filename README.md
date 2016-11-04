@@ -11,7 +11,7 @@ Leafer's Enron Fraud detection, utilizes scikit-learn and machine learning metho
 * [Concepts](#concepts)
 * [Creator](#creator)
 * [Resources](#resources)
-* [Short Answers](#short answers)
+* [Walk Through](#walk through)
 
 ### Summary
 
@@ -52,12 +52,12 @@ Decided to just run nbconvert instead of [automatically](http://protips.maxmasni
 * [Feature Stacker](http://scikit-learn.org/stable/auto_examples/feature_stacker.html)
 * [ScoreTracker](https://docs.google.com/spreadsheets/d/17Dfc6YY4BEzsf_n7j4Rp8hUX8GlvsQmZPr80iMbHKEA/edit#gid=0) (own personal tool)
 
-### Short Answers
+### Walk Through
 
 ---
-*1. Summarize for us the goal of this project and how machine learning is useful in trying to accomplish it. As part of your answer, give some background on the dataset and how it can be used to answer the project question. Were there any outliers in the data when you got it, and how did you handle those?  [relevant rubric items: “data exploration”, “outlier investigation”]*
+*Goals and why machine learning? Dataset background and rationale for choosing it. Discussion of outlier identification and handling*
 
-This project aims to train a machine learning classifier over the varied corpus of discrete, and at times seemingly disparate Enron data, to accurately predict persons-of-interests in detecting fraud. While the Enron case happened in the past, this classifier could be potentially applied to companies with similar datasets to detect fraudulent behavior of employees. Machine learning techniques are employed to vigorously train and rigourously test various algorithms to process a large amount of data - more data than one person can accurately process. Techniques to perform dimensionality reduction of the data, ie see patterns of data variance to draw out new predictive features is also used through Principle Component Analysis.
+This project trains a machine learning classifier over the varied corpus of discrete, and at times seemingly disparate Enron data, to accurately predict persons-of-interests in detecting fraud. While the Enron case happened in the past, this classifier could be potentially applied to companies with similar datasets to detect fraudulent behavior of employees. Machine learning techniques are employed to vigorously train and rigourously test various algorithms to process a large amount of data - more data than one person can accurately process. Techniques to perform dimensionality reduction of the data, ie see patterns of data variance to draw out new predictive features is also used through Principle Component Analysis.
 
 The aggregated Enron email and financial dataset is stored in a dictionary, where each key in the dictionary is a person’s name and the value is a dictionary containing all the features of that person. The email and finance (E+F) data dictionary is stored as a pickle file, which is a handy way to store and load python objects directly. The features in the data fall into three major types, namely financial features, email features and POI labels.
 
@@ -101,7 +101,7 @@ One of the biggest issues, and hindrances for me finishing this project successf
 
 ---
 
-*2. What features did you end up using in your POI identifier, and what selection process did you use to pick them? Did you have to do any scaling? Why or why not? Engineer and explain your own feature that did not come ready made in the dataset -- what was the rationale behind it. (You do not necessarily have to use it in the final analysis, only engineer and test it.) In your feature selection step, if you used an algorithm like a decision tree, please also give the feature importances of the features that you use, and if you used an automated feature selection function like SelectKBest, please report the scores_and reasons for your choice of parameter values.  [relevant rubric items: “create new features”, “properly scale features”, “intelligently select feature”]*
+*Final features used in POI classifier, and their selection process. Discussion of scaling and feature engineering + testing. Discussion of algorithm used, and feature importances and scores and reasons for choices.*
 
 I decided to code up a new feature that considers the ratio of messages *sent to* and ratio of messages that *came from* a POI. As corruption is rarely a one person endeavor, this feature would indicate a network exhibit through email exchange. From the EDA scatterplot, we can see that if a person has a ratio of messages TO a POI of less than ~0.18 and a ratio FROM a POI of less than ~0.25, then  they probably are not a POI. This new feature added to the predictive value of our model.
 
@@ -167,7 +167,7 @@ I tried using the [minmaxscaler](http://scikit-learn.org/stable/modules/generate
 When using PCA or SVM, it can also be helpful to center the data using something like [StandardScaler](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)
 
 ---
-*3. What algorithm did you end up using? What other one(s) did you try? How did model performance differ between algorithms?  [relevant rubric item: “pick an algorithm”]*
+*Final algorithm choice and rationale. Discussion of other algorithms tested and comparative model performance.*
 
 
 *Random Forest (bagging voting):* 
@@ -210,32 +210,32 @@ The final classifier submitted was a SVC with the parameters outlined above.
 For this project, I wanted to learn a huge range of classifiers to build up a repertoire for future projects. I preliminarily tried KNN, Support Vector Machine, and Gaussian Naive Bayes, but decided to focus on tuning and testing Adaboost and Random Forest ensemble classifiers. These classifiers have proven to be very powerful at Kaggle competitions, and I love exploring everything related to information entropy. Even though they are not primarily known for classification tasks, and wouldn't work well in integrating new data, they work well for the purposes of this project. I would love to explore which algorithms are best for introducing new data to the classifier, or in other words are best for continuous integration.
 
 ---
-*4. What does it mean to tune the parameters of an algorithm, and what can happen if you don’t do this well?  How did you tune the parameters of your particular algorithm? (Some algorithms do not have parameters that you need to tune -- if this is the case for the one you picked, identify and briefly explain how you would have done it for the model that was not your final choice or a different model that does utilize parameter tuning, e.g. a decision tree classifier).  [relevant rubric item: “tune the algorithm”]*
+*Notes on parameter tuning, and risks of poor tuning* 
 
 Tuning parameters of an algorithm is much like tuning a music string between flat and sharpe; one tunes the algorithm between bias and variance to get a better score for a metric that one is optimizing for (ie. accuracy, precision or recall). It may be the no. of nodes or the minimum amount of samples needed for a decision tree split; it may be tuning the *learning rates* of weak learners' in AdaBoost; Or, it may be toggling the number of clusters in a Kmeans.
 
 To systematically and automatically iterate through all the scores of varying parameter combinations, the GridSearchCV, paired with a pipeline to include the principal components in the model, is an extremely helpful tool.
 
 ---
-*5. What is validation, and what’s a classic mistake you can make if you do it wrong? How did you validate your analysis?  [relevant rubric item: “validation strategy”]*
+*Notes on validation and my validation strategy*
 
 Validation is performed to ensure that the classifier has strong external validity. A classic mistake it aims to avoid is overfitting the data, where the classifier is tuned to closely to only one case of the training/testing split of the data. 
 
 To avoid this, I used the [StratifiedShuffleSplit](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.StratifiedShuffleSplit.html), which is a merged cross-validation object of StratifiedKFold and ShuffleSplit, which returns stratified randomized folds.   
 
 ---
-*6. Give at least 2 evaluation metrics and your average performance for each of them.  Explain an interpretation of your metrics that says something human-understandable about your algorithm’s performance. [relevant rubric item: “usage of evaluation metrics”]*
+*Evaluation metrics chosen and their performance in a human-readable interpretation.*
 
 **Accuracy:**
 As the dataset in this project is very small and the ratio of negatives to positives is highly skewed (18 POIs out of 146 total cases), a classifier that predicted only non-POIs as output, would obtain an accuracy score of 87.4%. In this regard, accuracy is not a strong validation metric for our classifier. 
 
 Instead, precision and recall were used to evaluate the information gain and reliability of the classifier to identify POIs.
 
-**Precision(TP/TP+FP):**
+**Precision(TruePos/TruePos+FalsePos):**
 
 The precision value scores the ratio of true positive estimations over all positive estimations (true or false). In this project, it's the probability that a POI identified by the estimator (a positive) actually is a POI (a true positive). The probability of randomly sampling a POI from the dataset is about 0.12 and the probability of the algorithm to predict a true positive (out of all the positives it suggests) is on average 0.39. This suggests we are gaining information when using the estimator, and it is a *sufficient* hueristic for this goals of this project, but I believe a more offensive metric is a *necessary* hueristic to address fraud detection.
 
-**Recall (TP/TP+FN):**
+**Recall (TruePos/TruePos+FalseNeg):**
 The [adaboosted decision tree?] achieved a recall value of [0.308], suggesting that 69.2% of POIs go undetected. One could argue that this number is too low, as there is a lower cost to proving a non-corrupt person innocent compared to the cost of missing a true POI who would get away with fraudulently obtaining millions of dollars, however 
 
 In this context, recall is more important than precision (and accuracy) so re-tuning the algorithm to yield a better recall value at the cost of precision would be a more effective system in production to help in fraud detection. 
