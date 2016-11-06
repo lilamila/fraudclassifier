@@ -114,16 +114,16 @@ I recorded the scores here:
 https://docs.google.com/spreadsheets/d/17Dfc6YY4BEzsf_n7j4Rp8hUX8GlvsQmZPr80iMbHKEA/edit?usp=sharing)
 
 |1- Initial |2 - drop outliers  |3 - new email ratio features   |3 - new LT/ST feature|
-|--------------------|
-|Random Forest|
+|-----|----|-------|----|
+|Random Forest| - | - | -|
 |0.8472 |0.8541 |0.8629 |0.861|
 |0.1452 |0.1991 |0.2239 |0.1916|
 |0.1015 |0.126  |0.143  |0.115|
-|Adaboost|          
+|Adaboost| - | - | -|          
 |0.8449 |0.8415 |0.8511 |0.8207|
 |0.3407 |0.3189 |0.3687 |0.259|
 |0.3045 |0.2905 |0.335  |0.265|
-|Gaussian NB|           
+|Gaussian NB| - | - | -|           
 |0.3819 |0.7391 |0.739  |0.5746|
 |0.1702 |0.2698 |0.2696 |0.2035|
 |0.831  |0.3805 |0.38   |0.6|
