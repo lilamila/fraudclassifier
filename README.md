@@ -36,8 +36,6 @@ Decided to just run nbconvert instead of [automatically](http://protips.maxmasni
 
 ### Resources
 
-* [CSV/Writer Tutorial](http://goo.gl/HBbvyy)
-* [Pandas Cheatsheet](https://s3.amazonaws.com/quandl-static-content/Documents/Quandl+-+Pandas,+SciPy,+NumPy+Cheat+Sheet.pdf)
 * [Ensemble Classifiers](http://scikit-learn.org/stable/modules/ensemble.html)
 * [AdaBoost](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html)
 * [AdaBoost Weights](http://stackoverflow.com/questions/18054125/how-to-use-weight-when-training-a-weak-learner-for-adaboost)
