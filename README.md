@@ -1,6 +1,6 @@
 # Leafer's Enron Fraud Detection
 
-Leafer's Enron Fraud detection, utilizes scikit-learn and machine learning methodologies, to build a "person of interest" (POI) identifier that detects and predicts culpable persons. It uses features from financial data, email data, and labeled data. Created by [Marie Leaf](https://twitter.com/mariesleaf).
+Leafer's Enron Fraud detection, utilizes scikit-learn and machine learning, to build a "person of interest" (POI) identifier that detects and predicts culpable persons. It uses features from financial data, email data, and labeled data. Created by [Marie Leaf](https://twitter.com/mariesleaf).
 
 "You don't want another Enron? Here's your law: If a company, can't explain, in one sentence, what it does... it's illegal."
 
@@ -24,8 +24,8 @@ POIs who were indicted, reached a settlement or plea deal with the government, o
 
 ### Concepts
 
-Support Vector Machines, Ensemble Learners.
-Decided to just run nbconvert instead of [automatically](http://protips.maxmasnick.com/ipython-notebooks-automatically-export-py-and-html) creating .py file from .ipynb
+Support Vector Machines, Ensemble Learners.  
+Decided to just run nbconvert instead of [automatically](http://protips.maxmasnick.com/ipython-notebooks-automatically-export-py-and-html) creating .py file from .ipynb  
 
 ### Creator
 
