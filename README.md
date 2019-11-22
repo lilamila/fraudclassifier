@@ -16,7 +16,7 @@ Leafer's Enron Fraud detection, utilizes scikit-learn and machine learning, to b
 ### Summary
 
 * [Download the data](https://www.cs.cmu.edu/~./enron/)
-* Open the [html version](./final_project/poi_id.html) or [ipynb version](./final_project/poi_id.ipynb)of my workthrough.
+* Open the [html version](./enronproject/poi_id_notebook.html) or [ipynb version](./enronproject/poi_id_notebook.ipynb)of my workthrough.
 
 In 2000, Enron was one of the largest companies in the United States. By 2002, it had collapsed into bankruptcy due to widespread corporate fraud. In the resulting Federal investigation, a significant amount of typically confidential information entered into the public record, including tens of thousands of emails and detailed financial data for top executives. This project builds a person of interest (POI) identifier based on financial and email data made public as a result of the Enron scandal. 
 
