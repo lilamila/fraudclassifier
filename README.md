@@ -11,7 +11,7 @@ Leafer's Enron Fraud detection, utilizes scikit-learn and machine learning, to b
 * [Concepts](#concepts)
 * [Creator](#creator)
 * [Resources](#resources)
-* [Walk Through](#walk through)
+* [Walk Through](#walk-through)
 
 ### Summary
 
